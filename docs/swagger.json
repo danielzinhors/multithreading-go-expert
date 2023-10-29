@@ -1,0 +1,21 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Prodct API Consulta CEP",
+        "title": "Consulta CEP Go Expert API multithreading",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "Daniel Silveira",
+            "url": "http://danielsilveira.dev.br",
+            "email": "falecom@danielsilveira.dev.br"
+        },
+        "license": {
+            "name": "Daniel Silveira",
+            "url": "http://danielsilveira.dev.br"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8000",
+    "basePath": "/",
+    "paths": {}
+}
