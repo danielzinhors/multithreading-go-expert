@@ -34,10 +34,13 @@ func main() {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
+	allowedCharsets := []string{"UTF-8", "Latin-1", ""}
+	r.Use(middleware.ContentCharset(allowedCharsets...))
 	r.Route("/cep", func(r chi.Router) {
 		r.Get("/", cepHandler.BuscaCep)
 	})
 	portServer := ":" + configs.WebServerPort
 	r.Get("/docs/*", httpSwagger.Handler(httpSwagger.URL("http://localhost"+portServer+"/docs/doc.json")))
+	println("Escutando na porta" + portServer)
 	http.ListenAndServe(portServer, r)
 }
