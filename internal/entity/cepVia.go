@@ -13,17 +13,6 @@ type CepVia struct {
 	Siafi       string `json:"siafi"`
 }
 
-func NewCepVia(cep, logradouro, complemento, bairro, localidade, uf, ibge, gia, ddd, siafi string) (*CepVia, error) {
-	return &CepVia{
-		Cep:         cep,
-		Logradouro:  logradouro,
-		Complemento: complemento,
-		Bairro:      bairro,
-		Localidade:  localidade,
-		Uf:          uf,
-		Ibge:        ibge,
-		Gia:         gia,
-		Ddd:         ddd,
-		Siafi:       siafi,
-	}, nil
+func NewCepVia() *CepVia {
+	return &CepVia{}
 }
