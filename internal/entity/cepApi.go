@@ -11,15 +11,6 @@ type CepAPi struct {
 	StatusText string `json:"statusText"`
 }
 
-func NewCepApi(code, state, complemento, city, district, address, statusText string, status int, ok bool) (*CepAPi, error) {
-	return &CepAPi{
-		Code:       code,
-		State:      state,
-		City:       city,
-		District:   district,
-		Address:    address,
-		Status:     status,
-		Ok:         ok,
-		StatusText: statusText,
-	}, nil
+func NewCepApi() *CepAPi {
+	return &CepAPi{}
 }
