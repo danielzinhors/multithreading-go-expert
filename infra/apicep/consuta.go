@@ -15,15 +15,14 @@ func ConsultaCep(cep string) *entity.CepAPi {
 		panic(err)
 	}
 	endPointVia := configs.WebserviceApiCep
-	println(cep)
-	println(endPointVia)
+
 	req, error := http.Get(endPointVia + cep + ".json")
 	if error != nil {
 		return nil
 	}
 	defer req.Body.Close()
 	res, error := io.ReadAll(req.Body)
-	println(string(res))
+
 	if error != nil {
 		return nil
 	}

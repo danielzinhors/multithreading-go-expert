@@ -1,4 +1,33 @@
 basePath: /
+definitions:
+  entity.CepVia:
+    properties:
+      bairro:
+        type: string
+      cep:
+        type: string
+      complemento:
+        type: string
+      ddd:
+        type: string
+      gia:
+        type: string
+      ibge:
+        type: string
+      localidade:
+        type: string
+      logradouro:
+        type: string
+      siafi:
+        type: string
+      uf:
+        type: string
+    type: object
+  handlers.Error:
+    properties:
+      message:
+        type: string
+    type: object
 host: localhost:8000
 info:
   contact:
@@ -12,5 +41,30 @@ info:
   termsOfService: http://swagger.io/terms/
   title: Consulta CEP Go Expert API multithreading
   version: "1.0"
-paths: {}
+paths:
+  /cep:
+    get:
+      description: Busca um Cep em 2 api e devolve a mais rapida
+      parameters:
+      - description: cep
+        in: query
+        name: cep
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.CepVia'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handlers.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handlers.Error'
+      summary: Busca um Cep
+      tags:
+      - cep
 swagger: "2.0"

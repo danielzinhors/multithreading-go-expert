@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"time"
 
@@ -27,8 +28,8 @@ func NewCepHanbler() *CepHandler {
 // @Summary Busca um Cep
 // @Description Busca um Cep em 2 api e devolve a mais rapida
 // @Tags cep
-// @Param  cep path string true "cep"
-// @Success  200 {object} entity.Product
+// @Param  cep query string true "cep"
+// @Success  200 {object} entity.CepVia
 // @Failure  404  {object}  Error
 // @Failure  500  {object}  Error
 // @Router  /cep [get]
@@ -55,13 +56,18 @@ func (c *CepHandler) BuscaCep(w http.ResponseWriter, r *http.Request) {
 	select {
 	case cep := <-cepVia:
 		w.WriteHeader(http.StatusOK)
+		fmt.Println("Resposta da Via Cep")
+		fmt.Println(cep)
 		json.NewEncoder(w).Encode(cep)
 
 	case cep := <-apiCep:
 		w.WriteHeader(http.StatusOK)
+		fmt.Println("Resposta da Api Cep")
+		fmt.Println(cep)
 		json.NewEncoder(w).Encode(cep)
 
-	case <-time.After(time.Second * 3):
+	case <-time.After(time.Second * 1):
+		fmt.Println("Timeout")
 		json.NewEncoder(w).Encode([]byte("Timeout"))
 	}
 }

@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/danielzinhors/multithreading-go-expert/configs"
+	_ "github.com/danielzinhors/multithreading-go-expert/docs"
 	"github.com/danielzinhors/multithreading-go-expert/infra/webservers/handlers"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
@@ -23,7 +24,7 @@ import (
 // @license.url    http://danielsilveira.dev.br
 
 // @host   localhost:8000
-// @basePath  /
+// @BasePath  /
 func main() {
 	configs, err := configs.LoadConfig(".")
 	if err != nil {
